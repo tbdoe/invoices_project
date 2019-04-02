@@ -1,3 +1,8 @@
+invoices:
+    resource: "@InvoicesBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 app:
     resource: '@AppBundle/Controller/'
     type: annotation
