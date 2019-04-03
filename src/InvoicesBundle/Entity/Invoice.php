@@ -2,7 +2,6 @@
 
 namespace InvoicesBundle\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use InvoicesBundle\Entity\InvoiceData;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -54,23 +53,21 @@ class Invoice
 	
 	protected $invoiceData;
 	
-	protected $invoicesCollection;
-	
     public function __construct()
     {
-        $this->invoicesCollection = new ArrayCollection();
 		$this->setInvoiceData(new InvoiceData);
     }
-	
-    public function getinvoicesCollection()
-    {
-        return $this->invoicesCollection;
-    }
-	
 	
     public function setInvoiceData($invoiceData)
     {
         $this->invoiceData = $invoiceData;
+
+        return $this;
+    }
+	
+    public function setInvoiceDataId($id)
+    {
+        $this->invoiceData->setId($id);
 
         return $this;
     }

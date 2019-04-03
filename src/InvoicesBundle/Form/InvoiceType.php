@@ -21,13 +21,7 @@ class InvoiceType extends AbstractType
 			->add('invoiceDate')
 			->add('invoiceNumber',IntegerType::class)
 			->add('customerId')
-			//->add('invoiceData',InvoiceDataType::class)
-			->add('invoicesCollection', CollectionType::class, [
-					'entry_type' => InvoiceDataType::class,
-					'allow_add' => true,
-					'entry_options' => ['label' => false],
-					'label' => 'Invoice Data',
-					 ])
+			->add('invoiceData',InvoiceDataType::class)
 			->add('Add',SubmitType::class);
 			
     }/**
