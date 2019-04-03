@@ -16,14 +16,15 @@ class InvoiceData
      * @var int
      *
      * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
     /**
      * @var int
-	 * @ORM\OneToOne(targetEntity="Invoice", mappedBy="invoiceData", cascade="persist")
+	 * @ORM\Column(name="invoiceId", type="integer", unique=true, nullable=false)
+     * @ORM\Id
+	 * @ORM\GeneratedValue(strategy="AUTO")
      */
 	
     private $invoiceId;
@@ -217,4 +218,20 @@ class InvoiceData
     {
         return $this->totalAmount;
     }
+
+    /**
+     * Set id
+     *
+     * @param integer $id
+     *
+     * @return InvoiceData
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+
+        return $this;
+    }
+	
+	
 }

@@ -8,6 +8,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use InvoicesBundle\Form\InvoiceDataType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 
 class InvoiceType extends AbstractType
 {
@@ -18,14 +19,15 @@ class InvoiceType extends AbstractType
     {
         $builder
 			->add('invoiceDate')
-			->add('invoiceNumber')
+			->add('invoiceNumber',IntegerType::class)
 			->add('customerId')
 			//->add('invoiceData',InvoiceDataType::class)
 			->add('invoicesCollection', CollectionType::class, [
 					'entry_type' => InvoiceDataType::class,
 					'allow_add' => true,
 					'entry_options' => ['label' => false],
-					        ])
+					'label' => 'Invoice Data',
+					 ])
 			->add('Add',SubmitType::class);
 			
     }/**

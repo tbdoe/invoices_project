@@ -48,8 +48,8 @@ class Invoice
      * 
      *
 	 * @ORM\GeneratedValue(strategy="AUTO")
-     * @ORM\OneToOne(targetEntity="InvoiceData", inversedBy="invoiceId")
-     * @ORM\JoinColumn(name="InvoiceData", referencedColumnName="id", nullable=false)
+     * @ORM\OneToOne(targetEntity="InvoiceData", cascade="persist")
+     * @ORM\JoinColumn(name="InvoiceData", referencedColumnName="invoiceId", nullable=false)
      */
 	
 	protected $invoiceData;
