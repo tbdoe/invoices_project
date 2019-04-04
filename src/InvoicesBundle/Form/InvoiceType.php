@@ -5,10 +5,10 @@ namespace InvoicesBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use InvoicesBundle\Form\InvoiceDataType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 
 class InvoiceType extends AbstractType
 {
@@ -18,7 +18,10 @@ class InvoiceType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-			->add('invoiceDate')
+			->add('invoiceDate', DateType::class, [
+                'attr' => ['class' => 'js-datepicker'],
+				'widget' => 'single_text',
+            ])
 			->add('invoiceNumber',IntegerType::class)
 			->add('customerId')
 			->add('invoiceData',InvoiceDataType::class)

@@ -5,6 +5,8 @@ namespace InvoicesBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 
 class InvoiceDataType extends AbstractType
 {
@@ -17,9 +19,17 @@ class InvoiceDataType extends AbstractType
 			//->add('invoiceId')
 			->add('description')
 			->add('quantity')
-			->add('amount')
-			->add('vatAmount')
-			->add('totalAmount');
+			->add('amount', NumberType::class,
+						['scale' => 2,
+						'attr' => [
+				        'min' => 0,
+				        'max' => 999999999999.99,
+				    ]])
+			->add('vatAmount', IntegerType::class, [
+				    'attr' => [
+				        'min' => 0,
+				        'max' => 100,
+				    ]]);
     }/**
      * {@inheritdoc}
      */

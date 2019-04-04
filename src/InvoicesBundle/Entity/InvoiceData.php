@@ -180,8 +180,10 @@ class InvoiceData
      */
     public function setVatAmount($vatAmount)
     {
-        $this->vatAmount = $vatAmount;
-
+		$amount = $this->getAmount();
+		
+		$this->vatAmount = ($amount != null) ? round((($vatAmount / 100) * $amount),2) : $vatAmount;;
+        
         return $this;
     }
 
@@ -198,13 +200,13 @@ class InvoiceData
     /**
      * Set totalAmount
      *
-     * @param string $totalAmount
+     * @param string 
      *
      * @return InvoiceData
      */
-    public function setTotalAmount($totalAmount)
+    public function setTotalAmount()
     {
-        $this->totalAmount = $totalAmount;
+        $this->totalAmount = round(($this->vatAmount + $this->amount),2);
 
         return $this;
     }
@@ -232,6 +234,5 @@ class InvoiceData
 
         return $this;
     }
-	
 	
 }

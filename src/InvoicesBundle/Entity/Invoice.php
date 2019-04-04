@@ -71,6 +71,13 @@ class Invoice
 
         return $this;
     }
+	
+    public function setInvoiceDataTotalAmount()
+    {
+        $this->invoiceData->setTotalAmount();
+
+        return $this;
+    }
 
     /**
      * Get invoiceData
@@ -163,4 +170,7 @@ class Invoice
     {
         return $this->customerId;
     }
+	
+	
+	
 }
