@@ -47,6 +47,9 @@ class InvoiceController extends Controller
 					   //inelegant solution, must exist a better way.
 			   		   $invoice->setInvoiceDataInvoice();
 					   $entityManager->persist($invoice->getInvoiceData());
+					   
+					   $entityManager->persist($invoice);
+					   
 					   $entityManager->flush();
 
 					   //passed to the view to be dumped
