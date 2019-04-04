@@ -32,7 +32,7 @@ class Invoice
     /**
      * @var int
      *
-	 * @ORM\Column(name="invoiceNumber", type="integer")
+	 * @ORM\Column(name="invoiceNumber", type="integer", unique=true, nullable=false)
      */
     private $invoiceNumber;
 
@@ -46,9 +46,6 @@ class Invoice
     /**
      * 
      *
-	 * @ORM\GeneratedValue(strategy="AUTO")
-     * @ORM\OneToOne(targetEntity="InvoiceData", cascade="persist")
-     * @ORM\JoinColumn(name="InvoiceData", referencedColumnName="invoiceId", nullable=false)
      */
 	
 	protected $invoiceData;
@@ -64,7 +61,17 @@ class Invoice
 
         return $this;
     }
+
+
+    public function setInvoiceDataInvoice()
+    {
+        $this->invoiceData->setInvoice($this);
+
+        return $this;
+    }
 	
+	
+	//remove
     public function setInvoiceDataId($id)
     {
         $this->invoiceData->setId($id);

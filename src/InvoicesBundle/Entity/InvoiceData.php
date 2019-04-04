@@ -16,18 +16,20 @@ class InvoiceData
      * @var int
      *
      * @ORM\Column(name="id", type="integer")
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+	 * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
     /**
      * @var int
-	 * @ORM\Column(name="invoiceId", type="integer", unique=true, nullable=false)
-     * @ORM\Id
-	 * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\OneToOne(targetEntity="Invoice", cascade="persist")
+	 * @ORM\JoinTable(name="invoiceData",
+	 *      joinColumns={@ORM\JoinColumn(name="$invoiceNumber", referencedColumnName="invoiceNumber")},
+	 *      inverseJoinColumns={@ORM\JoinColumn(name="invoice", referencedColumnName="id")})
      */
 	
-    private $invoiceId;
+    private $invoice;
 
     /**
      * @var string
@@ -76,15 +78,15 @@ class InvoiceData
     }
 
     /**
-     * Set invoiceId
+     * Set invoice
      *
-     * @param integer $invoiceId
+     * @param Invoice $invoice
      *
      * @return InvoiceData
      */
-    public function setInvoiceId($invoiceId)
+    public function setInvoice($invoice)
     {
-        $this->invoiceId = $invoiceId;
+        $this->invoice = $invoice;
 
         return $this;
     }
@@ -92,11 +94,11 @@ class InvoiceData
     /**
      * Get invoiceId
      *
-     * @return int
+     * @return Invoice
      */
-    public function getInvoiceId()
+    public function getInvoice()
     {
-        return $this->invoiceId;
+        return $this->invoice;
     }
 
     /**
