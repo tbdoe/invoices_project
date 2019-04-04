@@ -1,0 +1,39 @@
+{% extends '@Invoices/Default/two_columns.html.twig' %}
+
+ {% block stylesheets %}
+ <style>
+ .entry{margin-top: 10px;}
+ </style>
+ {% endblock %}
+
+{% if db is not empty %}
+	
+	{# dump invoice rows in col 1 #}
+ 	{% block col1 %}
+
+ 		{% for pair in db %}
+ 			<h5>Invoice number: {{pair["invoice_entry"]["invoiceNumber"]}}</h5>
+
+ 			<div class="entry">
+ 			{{dump(pair["invoice_entry"])}}
+ 			</div>
+
+ 		{% endfor %}
+
+ 	{% endblock %}
+
+	{# dump  invoice_data rows in col 2 #}
+ 	{% block col2 %}
+
+ 		{% for pair in db %}
+ 			<h5>Related invoice data:</h5>
+
+ 			<div class="entry">
+ 			{{dump(pair["invoiceData_entry"])}}
+ 			</div>
+
+ 		{% endfor %}
+
+	{% endblock %}
+
+{% endif %}

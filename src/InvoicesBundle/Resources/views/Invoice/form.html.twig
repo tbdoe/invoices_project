@@ -1,12 +1,11 @@
 {% extends '@Invoices/Default/two_columns.html.twig' %}
 
 {% block stylesheets %}
-<style>
-.outer-box{background-color: #EEEEEE;}
-</style>
+<!-- too lazy to write a custom .css for a single declaration (or tow) -->
+<style>.outer-box{background-color: #EEEEEE;}</style>
 {% endblock %}
 
-
+{# creates the form view using bootstrap #}
 {% block col1 %}	
 
 	{{ form_start(form, {'attr': {'class': 'text-left border border-light p-5 outer-box'}}) }}
@@ -14,30 +13,27 @@
 	<p class="h4 mb-4">Insert a new invoice</p>
 
 	{{ form_errors(form) }}
+	
 
+	{# Invoice fields #}
 	{{ form_row(form.invoiceDate, {'attr': {'class': 'form-control mb-4'}}) }}
 
-    <!-- Name -->
 	{{ form_row(form.invoiceNumber, {'attr': {'class': 'form-control mb-4'}}) }}
 
-    <!-- Name -->
 	{{ form_row(form.customerId, {'attr': {'class': 'form-control mb-4'}}) }}
 
-
+	
+	{# Invoice Data fields #}
 	<p class="h5 mb-4">Invoice data: </p>
-    <!-- Name -->
+    
 	{{ form_row(form.invoiceData.description, {'attr': {'class': 'form-control mb-4'}}) }}
 
-    <!-- Name -->
 	{{ form_row(form.invoiceData.quantity, {'attr': {'class': 'form-control mb-4'}}) }}
 
-    <!-- Name -->
 	{{ form_row(form.invoiceData.amount, {'label': 'Amount (€)', 'attr': {'class': 'form-control mb-4'}}) }}
 
-    <!-- Name -->
 	{{ form_row(form.invoiceData.vatAmount, {'label': 'VAT %','attr': {'class': 'form-control mb-4'}}) }}
 
-    <!-- Name -->
 	{{ form_row(form.Add, {'label': 'Add to database', 'attr': {'class': 'btn btn-info btn-block'}}) }}
 
 	{{ form_end(form) }}
@@ -45,6 +41,7 @@
 
 {% endblock %}
 
+{# in the second column shows the inserted invoice (retreived from db) #}
 {% block col2 %}
 	
 	{% if invoiceEntity is not null %}

@@ -15,6 +15,7 @@ class InvoiceDataType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+		//still about the validator: I'm sure it would offer better ways to manage the required attributes. 
         $builder
 			->add('description')
 			->add('quantity', IntegerType::class, [

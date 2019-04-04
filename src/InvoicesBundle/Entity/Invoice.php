@@ -48,17 +48,20 @@ class Invoice
     private $customerId;
 
     /**
-     * 
+     * thought it could be conceptually correct the Invoice to have its invoiceData property.
+	 * also useful in creating the form.
      *
      */
 	
 	protected $invoiceData;
 	
+	// create an InvoiceData instance when the Invoice is instantiated
     public function __construct()
     {
 		$this->setInvoiceData(new InvoiceData);
     }
 	
+	//setter
     public function setInvoiceData($invoiceData)
     {
         $this->invoiceData = $invoiceData;
@@ -66,7 +69,7 @@ class Invoice
         return $this;
     }
 
-
+	// a vehicle to set the invoice in InvoiceData. not sure about it... (see comments in InvoiceController)
     public function setInvoiceDataInvoice()
     {
         $this->invoiceData->setInvoice($this);
@@ -74,15 +77,7 @@ class Invoice
         return $this;
     }
 	
-	
-	//remove
-    public function setInvoiceDataId($id)
-    {
-        $this->invoiceData->setId($id);
-
-        return $this;
-    }
-	
+	// as above, a vehicle to access to InvoiceData setter
     public function setInvoiceDataTotalAmount()
     {
         $this->invoiceData->setTotalAmount();

@@ -1,14 +1,14 @@
 <!DOCTYPE html>
+<!-- a 2 columns template extended by all the views -->
 <html lang="en">
     <head>
         <title></title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-		
-		<style>
-		body{padding-top: 20px;}
-		</style>
+	
+		<!-- too lazy to write a custom .css for a single declaration -->
+		<style>body{padding-top: 20px;}</style>
 		
 		{% block stylesheets %}{% endblock %}
 		
@@ -30,7 +30,7 @@
 			
 		  </div>
 		</div>
-		
+		<!-- unused block. but just in case... -->
 		{% block javascripts %}{% endblock %}
     </body>
 </html>

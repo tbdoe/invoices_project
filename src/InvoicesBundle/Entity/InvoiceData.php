@@ -20,6 +20,8 @@ class InvoiceData
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
+	
+	// I'm not fully convinced about this relationship...I'll write about this in the email/README
 
     /**
      * @var int
@@ -92,7 +94,7 @@ class InvoiceData
     }
 
     /**
-     * Get invoiceId
+     * Get invoice
      *
      * @return Invoice
      */
@@ -184,6 +186,8 @@ class InvoiceData
     {
 		$amount = $this->getAmount();
 		
+		// I realized quite late there is a percentgeType. anyway, because of the struggles with the 
+		// validator and to avoid spending more time, I decided to leave this solution.
 		$this->vatAmount = ($amount != null) ? round((($vatAmount / 100) * $amount),2) : $vatAmount;;
         
         return $this;
