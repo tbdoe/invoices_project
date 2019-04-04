@@ -10,15 +10,7 @@ use InvoicesBundle\Form\InvoiceType;
 use InvoicesBundle\Entity\InvoiceData;
 
 class InvoiceController extends Controller
-{
-    // /**
-    //  * @Route("/invoice", name="invoice_home")
-    //  */
-    // public function indexAction()
-    // {
-    //     return $this->render('@Invoices/Invoice/index.html.twig');
-    // }
-		
+{		
 	    /**
 		     * @Route("/{invoiceEntity}", name="invoice_new")
 	     */
@@ -31,7 +23,10 @@ class InvoiceController extends Controller
 
 				$form->handleRequest($request);
 
-
+				//about form validation: inserting a preexisting invoice number throws error 
+				//(as the field is supposed to be unique). so, i tried to use UniqueEntity validator to solve the issue,
+				//but there's no way to make it work (always throwing the error 'The annotation "@Doctrine\ORM\Mapping\UniqueEntity" in class InvoicesBundle\Entity\Invoice does not exist, or could not be auto-loaded.'): after adding the requires in composer.json, I am maybe still missing something. so...I spare me an ugly workaround to manually validate it, and just report it. Same thing for amount field: '@ORM precision = 12' can't be validated,
+				//so the user can actually set higher numbers. what a pity..!
 			       if ($form->isSubmitted() && $form->isValid()) {
 
 					   $invoice = $form->getData();

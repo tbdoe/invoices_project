@@ -21,8 +21,14 @@ class InvoiceType extends AbstractType
 			->add('invoiceDate', DateType::class, [
 				'widget' => 'single_text',
             ])
-			->add('invoiceNumber',IntegerType::class)
-			->add('customerId')
+			->add('invoiceNumber', IntegerType::class, [
+				    'attr' => [
+				        'min' => 1,
+				    ]])
+			->add('customerId', IntegerType::class, [
+				    'attr' => [
+				        'min' => 1,
+				    ]])
 			->add('invoiceData',InvoiceDataType::class)
 			->add('Add',SubmitType::class);
 			

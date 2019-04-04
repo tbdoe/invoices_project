@@ -16,15 +16,13 @@ class InvoiceDataType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-			//->add('invoiceId')
 			->add('description')
-			->add('quantity')
-			->add('amount', NumberType::class,
-						['scale' => 2,
-						'attr' => [
-				        'min' => 0,
-				        'max' => 999999999999.99,
+			->add('quantity', IntegerType::class, [
+				    'attr' => [
+				        'min' => 1,
 				    ]])
+			->add('amount', NumberType::class,
+						['scale' => 2,])
 			->add('vatAmount', IntegerType::class, [
 				    'attr' => [
 				        'min' => 0,

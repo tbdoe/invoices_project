@@ -3,7 +3,10 @@
 namespace InvoicesBundle\Entity;
 
 use InvoicesBundle\Entity\InvoiceData;
+
 use Doctrine\ORM\Mapping as ORM;
+//use Symfony\Component\Validator\Constraints as Assert;
+//use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * Invoice
@@ -32,7 +35,8 @@ class Invoice
     /**
      * @var int
      *
-	 * @ORM\Column(name="invoiceNumber", type="integer", unique=true, nullable=false)
+	 * @ORM\Column(name="invoiceNumber", type="integer", nullable=false)
+	 * 
      */
     private $invoiceNumber;
 
