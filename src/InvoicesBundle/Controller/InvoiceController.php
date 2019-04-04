@@ -11,16 +11,16 @@ use InvoicesBundle\Entity\InvoiceData;
 
 class InvoiceController extends Controller
 {
-    /**
-     * @Route("/invoice", name="invoice_home")
-     */
-    public function indexAction()
-    {
-        return $this->render('@Invoices/Invoice/index.html.twig');
-    }
+    // /**
+    //  * @Route("/invoice", name="invoice_home")
+    //  */
+    // public function indexAction()
+    // {
+    //     return $this->render('@Invoices/Invoice/index.html.twig');
+    // }
 		
 	    /**
-		     * @Route("/invoice/add_new/{invoiceEntity}", name="invoice_new")
+		     * @Route("/{invoiceEntity}", name="invoice_new")
 	     */
 	    public function addNewAction(Request $request, $invoiceEntity=null)
 	    {

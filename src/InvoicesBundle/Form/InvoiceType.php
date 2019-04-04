@@ -19,7 +19,6 @@ class InvoiceType extends AbstractType
     {
         $builder
 			->add('invoiceDate', DateType::class, [
-                'attr' => ['class' => 'js-datepicker'],
 				'widget' => 'single_text',
             ])
 			->add('invoiceNumber',IntegerType::class)
